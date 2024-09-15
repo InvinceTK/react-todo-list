@@ -1,0 +1,12 @@
+*, ::after,::before{
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-color: "white";
+    --secondary-color: "#2ecc71";
+    --base-font-size: 30px;
+    --base-padding: 5px
+}
+
+
