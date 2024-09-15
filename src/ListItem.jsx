@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
 import "./ListItem.css"
+
 export default function ListItem({items, setItems}) {
-   
+  const apiURL = import.meta.env.VITE_API_URL
    async function toggleCheckbox(id){
         const currentItem = items.find(item => item._id === id);
 
@@ -13,7 +14,7 @@ export default function ListItem({items, setItems}) {
         )
 
         try {
-            const response = await axios.post('http://localhost:3000/api/item-update-checkbox', 
+            const response = await axios.post(`${apiURL}/item-update-checkbox`, 
                 {
                     completed : !currentItem.completed ,
                     _id: currentItem._id
@@ -31,7 +32,7 @@ export default function ListItem({items, setItems}) {
         }))
         
         try {
-            const response = await axios.post('http://localhost:3000/api/item-delete', {id})
+            const response = await axios.post(`${apiURL}/item-delete`, {id})
         } catch (error) {
             console.error("error removing item:",error)
         }

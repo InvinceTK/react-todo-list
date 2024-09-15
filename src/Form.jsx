@@ -1,9 +1,11 @@
 import React from 'react'
-import {v4 as uuidv4} from "uuid"
 import axios from 'axios'
 import "./Form.css"
 
+
+
 export default function Form({setItems,items,setMessage,message}) {
+    const apiURL = import.meta.env.VITE_API_URL
 
     async function handleSubmit(e){
     e.preventDefault()
@@ -14,7 +16,7 @@ export default function Form({setItems,items,setMessage,message}) {
     }
 
     try {
-        const response = await axios.post('http://localhost:3000/api/item-create', newItem);
+        const response = await axios.post(`${apiURL}/item-create`, newItem);
         if(response.status === 201){
             setItems((prevItems)=> [...prevItems,response.data])
         }

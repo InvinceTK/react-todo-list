@@ -5,15 +5,18 @@ import ListItem from './ListItem.jsx'
 import React from 'react'
 import axios from 'axios'
 
+
 export default function App() {
 
   const [message,setMessage] = useState('')
   const [items,setItems] = useState([])
   
+  const apiURL = import.meta.env.VITE_API_URL
+
   useEffect(()=>{
     async function fetchTodos() {
       try {
-        const response = await axios.get('http://localhost:3000/api/item-retrieve')
+        const response = await axios.get(`${apiURL}/item-retrieve`)
         if(response.status === 200){
           setItems(response.data)
         }
